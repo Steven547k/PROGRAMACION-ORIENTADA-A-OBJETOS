@@ -1,0 +1,28 @@
+# clima_tradicional.py
+
+def ingresar_temperaturas():
+    """Solicita al usuario ingresar temperaturas para cada día de la semana."""
+    temperaturas = []
+    dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+    for dia in dias:
+        temp = float(input(f"Ingrese la temperatura del día {dia}: "))
+        temperaturas.append(temp)
+    return temperaturas
+
+def calcular_promedio(temperaturas):
+    """Calcula el promedio de una lista de temperaturas."""
+    return sum(temperaturas) / len(temperaturas)
+
+def mostrar_resultado(promedio):
+    """Muestra el promedio calculado."""
+    print(f"\nEl promedio semanal de temperaturas es: {promedio:.2f}°C")
+
+# Ejecución principal
+def main():
+    print("=== Programa de Promedio Semanal (Tradicional) ===")
+    temps = ingresar_temperaturas()
+    promedio = calcular_promedio(temps)
+    mostrar_resultado(promedio)
+
+if __name__ == "__main__":
+    main()
