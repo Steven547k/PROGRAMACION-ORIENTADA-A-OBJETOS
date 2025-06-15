@@ -1,0 +1,33 @@
+# clima_poo.py
+
+class RegistroClima:
+    def __init__(self):
+        self.temperaturas = []
+
+    def ingresar_datos(self):
+        """Solicita temperaturas para los 7 días de la semana y las guarda."""
+        dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+        for dia in dias:
+            temp = float(input(f"Ingrese la temperatura del día {dia}: "))
+            self.temperaturas.append(temp)
+
+    def calcular_promedio(self):
+        """Calcula el promedio de temperaturas."""
+        if not self.temperaturas:
+            return 0
+        return sum(self.temperaturas) / len(self.temperaturas)
+
+    def mostrar_resultado(self):
+        """Muestra el promedio semanal."""
+        promedio = self.calcular_promedio()
+        print(f"\nEl promedio semanal de temperaturas es: {promedio:.2f}°C")
+
+# Ejecución principal
+def main():
+    print("=== Programa de Promedio Semanal (POO) ===")
+    clima = RegistroClima()
+    clima.ingresar_datos()
+    clima.mostrar_resultado()
+
+if __name__ == "__main__":
+    main()
