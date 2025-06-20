@@ -1,0 +1,40 @@
+# Clase base
+class Alimento:
+    def __init__(self, nombre, color):
+        self.nombre = nombre
+        self.color = color
+
+    def mostrar_info(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Color: {self.color}")
+
+# Clase derivada: Fruta
+class Fruta(Alimento):
+    def __init__(self, nombre, color, es_tropical):
+        super().__init__(nombre, color)
+        self.es_tropical = es_tropical
+
+    def mostrar_info(self):
+        super().mostrar_info()
+        print(f"¿Es tropical? {'Sí' if self.es_tropical else 'No'}")
+
+# Clase derivada: Verdura
+class Verdura(Alimento):
+    def __init__(self, nombre, color, se_come_cruda):
+        super().__init__(nombre, color)
+        self.se_come_cruda = se_come_cruda
+
+    def mostrar_info(self):
+        super().mostrar_info()
+        print(f"¿Se puede comer cruda? {'Sí' if self.se_come_cruda else 'No'}")
+
+# Crear objetos
+manzana = Fruta("Manzana", "Rojo", False)
+zanahoria = Verdura("Zanahoria", "Naranja", True)
+
+# Mostrar información
+print("Información de la fruta:")
+manzana.mostrar_info()
+
+print("\nInformación de la verdura:")
+zanahoria.mostrar_info()

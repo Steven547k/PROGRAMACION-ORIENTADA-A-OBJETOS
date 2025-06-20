@@ -1,0 +1,37 @@
+# Clase base
+class Alimentos:
+    def __init__(self,Verdura,Fruta):
+        self.Verdurta = Verdura
+        self.Frutas = Fruta
+
+    def mostrar_info(self):
+        print(f"Nombre: {self.Frutas}")
+        print(f"Color: {self.Verdurta}")
+
+# Clase derivada Frutas
+class Fruta(Alimentos):
+    def __init__(self, Verdura, Fruta, Color):
+        super().__init__(Verdura, Fruta)
+        self.Color = Color
+
+    def mostrar_info(self):
+        super().mostrar_info()
+        print(f"¿Tiene semillas? {'Si'if self.Color else 'No'}")
+# Clase derivada Hortalizas
+class Hortaliza(Alimentos):
+    def __init__(self, Verdura, Fruta, se_come_cruda):
+        super().__init__(Verdura, Fruta)
+        self.se_come_cruda = se_come_cruda
+
+    def mostrar_info(self):
+        super().mostrar_info()
+        print(f"¿Se puede comer crudo? {'Si' if self.se_come_cruda else 'No'}")
+# Crear objetos
+Guineo = Fruta("Amarillo", "Guineo", "Amarillo" )
+Lechuga = Hortaliza("Verde", "Lechuga", "Si")
+# Mostrar informavion
+print("Informacion de Frutas")
+Guineo.mostrar_info()
+
+print("Infoormacion de Hortalizasa")
+Lechuga.mostrar_info()
