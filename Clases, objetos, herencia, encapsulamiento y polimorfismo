@@ -1,0 +1,59 @@
+# Clase base
+class Animal:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre  # Atributo público
+        self.edad = edad
+        self.__historial_medico = []  # Atributo privado (encapsulado)
+
+    def agregar_historial(self, registro):
+        """Agrega un registro al historial médico (acceso controlado)."""
+        self.__historial_medico.append(registro)
+
+    def ver_historial(self):
+        """Muestra el historial médico completo del animal."""
+        return self.__historial_medico
+
+    def hacer_sonido(self):
+        """Método genérico que será sobrescrito en clases hijas (polimorfismo)."""
+        return "Sonido genérico de animal"
+
+    def __str__(self):
+        return f"{self.nombre}, {self.edad} años"
+
+# Clase derivada 1
+class Perro(Animal):
+    def __init__(self, nombre, edad, raza):
+        super().__init__(nombre, edad)
+        self.raza = raza
+
+    def hacer_sonido(self):
+        """Sobrescribe el método hacer_sonido (polimorfismo)."""
+        return "¡Guau guau!"
+
+# Clase derivada 2
+class Gato(Animal):
+    def __init__(self, nombre, edad, color):
+        super().__init__(nombre, edad)
+        self.color = color
+
+    def hacer_sonido(self):
+        """Sobrescribe el método hacer_sonido (polimorfismo)."""
+        return "¡Miau!"
+
+# Programa principal
+if __name__ == "__main__":
+    # Crear instancias
+    perro1 = Perro("Max", 5, "Labrador")
+    gato1 = Gato("Luna", 3, "Negro")
+
+    # Usar métodos
+    perro1.agregar_historial("Vacunado contra la rabia")
+    gato1.agregar_historial("Desparasitado")
+
+    print(f"🐶 {perro1}")
+    print("Sonido:", perro1.hacer_sonido())
+    print("Historial médico:", perro1.ver_historial())
+
+    print("\n🐱", gato1)
+    print("Sonido:", gato1.hacer_sonido())
+    print("Historial médico:", gato1.ver_historial())
