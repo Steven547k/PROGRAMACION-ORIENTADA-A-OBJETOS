@@ -1,0 +1,64 @@
+class ConexionBaseDatos:
+    """
+    Clase que simula la conexión a una base de datos.
+    Utiliza un constructor (__init__) para abrir la conexión
+    y un destructor (__del__) para cerrarla automáticamente.
+    """
+
+    def __init__(self, nombre_bd):
+        # Constructor: se ejecuta automáticamente al crear el objeto
+        self.nombre_bd = nombre_bd
+        self.conectado = False
+        self.conectar()
+
+    def conectar(self):
+        """
+        Simula la apertura de una conexión a la base de datos.
+        """
+        self.conectado = True
+        print(f"🔌 Conexión establecida con la base de datos: {self.nombre_bd}")
+
+    def realizar_consulta(self, consulta):
+        """
+        Simula la ejecución de una consulta en la base de datos.
+        """
+        if self.conectado:
+            print(f"📄 Ejecutando consulta en {self.nombre_bd}: {consulta}")
+        else:
+            print("⚠️ No hay conexión a la base de datos.")
+
+    def cerrar_conexion(self):
+        """
+        Cierra la conexión a la base de datos.
+        """
+        if self.conectado:
+            print(f"🔒 Conexión cerrada con la base de datos: {self.nombre_bd}")
+            self.conectado = False
+
+    def __del__(self):
+        # Destructor: se ejecuta automáticamente cuando el objeto es destruido
+        print("🧹 Llamando al destructor...")
+        self.cerrar_conexion()
+
+
+# -------------------------------
+# 🧪 Uso del programa
+# -------------------------------
+
+def main():
+    print("🔁 Iniciando programa...")
+    
+    # Creamos un objeto de la clase ConexionBaseDatos
+    conexion = ConexionBaseDatos("tienda_virtual")
+
+    # Realizamos una consulta
+    conexion.realizar_consulta("SELECT * FROM productos")
+
+    # El objeto será destruido al final del programa o al usar 'del'
+    del conexion
+
+    print("✅ Fin del programa.")
+
+# Ejecutar solo si es el programa principal
+if __name__ == "__main__":
+    main()
