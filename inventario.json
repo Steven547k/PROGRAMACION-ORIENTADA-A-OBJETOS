@@ -1,1 +1,8 @@
-{}
+{
+    "4567": {
+        "id": "4567",
+        "nombre": "Galletas",
+        "cantidad": 56,
+        "precio": 25.0
+    }
+}
