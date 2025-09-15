@@ -1,0 +1,48 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+
+def agregar_dato():
+    dato = entrada.get()
+    if dato.strip() != "":
+        lista.insert("", "end", values=(dato,))
+        entrada.delete(0, tk.END)
+    else:
+        messagebox.showwarning("Advertencia", "No se puede agregar un campo vacío.")
+
+def limpiar_dato():
+    seleccion = lista.selection()
+    if seleccion:
+        for item in seleccion:
+            lista.delete(item)
+    else:
+        messagebox.showinfo("Info", "Seleccione un elemento para eliminar.")
+
+# Ventana principal
+ventana = tk.Tk()
+ventana.title("Gestión de Datos - Ejemplo GUI")
+
+# Etiqueta
+label = tk.Label(ventana, text="Ingrese un dato:")
+label.pack(pady=5)
+
+# Campo de texto
+entrada = tk.Entry(ventana, width=40)
+entrada.pack(pady=5)
+
+# Botones
+frame_botones = tk.Frame(ventana)
+frame_botones.pack(pady=5)
+
+btn_agregar = tk.Button(frame_botones, text="Agregar", command=agregar_dato)
+btn_agregar.grid(row=0, column=0, padx=5)
+
+btn_limpiar = tk.Button(frame_botones, text="Limpiar", command=limpiar_dato)
+btn_limpiar.grid(row=0, column=1, padx=5)
+
+# Tabla (Treeview)
+lista = ttk.Treeview(ventana, columns=("Dato",), show="headings", height=8)
+lista.heading("Dato", text="Datos ingresados")
+lista.pack(pady=10)
+
+# Ejecutar ventana
+ventana.mainloop()
